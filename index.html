@@ -9,9 +9,9 @@
 </head>
 <body>
     <header>
-        <a href="#">Easy</a>
-        <a href="#">Medium</a>
-        <a href="#">Hard</a>
+        <a id="easy" onclick="levelEasy()" href="#">Easy</a>
+        <a id="medium" onclick="levelMedium()" href="#">Medium</a>
+        <a id="hard" onclick="levelHard()" href="#">Hard</a>
         <a href="#">Ludicrous</a>
     </header>
     <main>
@@ -34,7 +34,7 @@
            <div id="m9" class="medium"></div>
         </div>
         <div class="levelHard">
-            <div id="h1" class="herd"></div>
+            <div id="h1" class="hard"></div>
             <div id="h2" class="hard"></div>
             <div id="h3" class="hard"></div>
             <div id="h4" class="hard"></div>
@@ -51,6 +51,7 @@
             <div id="h15" class="hard"></div>
             <div id="h16" class="hard"></div>
         </div>
+        <button onclick="game(easy)" id="start">Start!</button>
         <div id="modal">
             <div id="modalBox">
                 <h1>Instructions</h1>
@@ -60,5 +61,6 @@
         </div>
     </main>
     <footer></footer>
+    <script src="script.js"></script>
 </body>
 </html>
