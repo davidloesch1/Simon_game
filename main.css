@@ -80,6 +80,12 @@ button {
 .active {
     filter: brightness(200%);
 }
+#levelBox {
+    height: 100px;
+    width: 300px;
+    background-color: floralwhite;
+    margin-bottom: 20px;
+}
 .cell {
     width: 100%;
     height: 100%;
