@@ -1,9 +1,36 @@
+main {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-flow: column;
+}
+header {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+a {
+    color: white;
+    font-size: large;
+    font-family: Arial, Helvetica, sans-serif;
+    text-decoration: none;
+    margin: 30px 40px 30px 40px;
+}
 .gameBoard {
+    margin: auto;
     width: 400px;
     height: 400px;
-    box-sizing: border-box;
     border: 1px solid white;
     background-color: grey;
+}
+button {
+    padding: 10px 15px 10px 15px;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 18px;
+    margin: auto;
+}
+#start {
+    margin-top: 20px;
 }
 .easy {
     display: grid;
@@ -32,6 +59,24 @@
 .four { 
     background-color: yellow;
 }
+.five {
+    background-color: indigo;
+}
+.six {
+    background-color: olive;
+}
+.seven {
+    background-color: goldenrod;
+}
+.eight {
+    background-color: dodgerblue;
+}
+.nine {
+    background-color: deeppink;
+}
+.ten {
+    background-color: khaki;
+}
 .active {
     filter: brightness(200%);
 }
@@ -39,6 +84,8 @@
     width: 100%;
     height: 100%;
     border: 15px solid grey;
+    box-sizing: border-box;
+    border-radius: 50%;
 }
 .cell:active {
     filter: brightness(200%);

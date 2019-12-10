@@ -2,15 +2,21 @@ var colorPicker = {
     0: "one",
     1: "two",
     2: "three",
-    3: "four"
+    3: "four",
+    4: "five",
+    5: "six",
+    6: "seven",
+    7: "eight",
+    8: "nine",
+    9: "ten"
 }
 const gameBoardSquares = {
     "easy": 4,
     "medium": 9,
     "hard": 16,
-    "ludicrous": 90
+    "ludicrous": 100
 }
-
+//this creates the board based off which difficulty you want to play
 class GameBoard {
     constructor(difficulty, squares) {
         this.difficulty = difficulty,
@@ -25,15 +31,21 @@ class GameBoard {
         for(let i = 0; i < squares; i++){
             let cell = document.createElement("div")
             cell.id = i
-            let x = i % 4
+            let x = Math.floor((Math.random() * 10))
             x = colorPicker[x]
             cell.classList.add(x, "cell")
             gameBoard.appendChild(cell)
         }
         this.boardArray = Array.from(gameBoard.children)
+        this.boardArray.forEach(el => {
+            el.addEventListener("click", e => {
+                userClick(e)
+            })
+        });
     }
 }
 
+//this creates a new game object for each restart
 class Game {
     constructor(gameArray, userArray, clicks, level){
         this.game = gameArray,
@@ -54,48 +66,35 @@ function newBoard(event) {
     let squares = gameBoardSquares[difficulty]
     myBoard = new GameBoard(difficulty, squares,) 
     myBoard.createBoard(squares)
+    // console.log(myBoard.boardArray)
 }
 
 function startGame(){
     myGame = new Game([],[], 0 ,1)
-    console.log(myGame)
+    // console.log(myGame)
     myGame.createGameMemory()
-    console.log(myGame)
+    // console.log(myGame)
 }
-
 
 function userClick(event){
     let target = event.target
-    console.log(target)
-    let i = myGame.clicks
-    console.log(myGame.game[i])
-    if(target === myGame.game[i]){
-        myGame.clicks ++
-        console.log(myGame.clicks)
-        if(myGame.clicks === myGame.game.length) {
-            console.log("new level")
-            myGame.clicks = 0
+    myGame.user.push(target)
+    console.log(myGame)
+    let i = myGame.user.length - 1
+    if(myGame.user[i] === myGame.game[i]){
+        console.log("happy days")
+        if(myGame.user.length === myGame.game.length){
+            myGame.user = []
+            console.log("next level")
+            // myBoard.boardArray.forEach(el => el.removeEventListener("click", userClick))
             myGame.createGameMemory()
         }
+        
     } else {
-        alert("you lose")
+        alert("Wrong Box!!! Game Over!!!")
+        startGame()
     }
-    console.log(i)
-    console.log(myGame.game[i])
-    console.log(myGame.game)
-}
-
-
-function newRound(user, game) {
-    if(user.length !== game.length){
-        return false
-    }
-    for(let i = 0; i < user.length; i ++){
-        if(user[i] !== game[i]){
-            return false
-        }
-    }
-    return true
+    
 }
 
 function parseGameMemory(gameMemory) {
@@ -107,11 +106,12 @@ function parseGameMemory(gameMemory) {
             j++
         } else {
             clearInterval(action)
-            myBoard.boardArray.forEach(el => {
-                el.addEventListener("click", (event)=> {
-                    userClick(event)
-                })
-            });
+            myGame.user = []
+            // myBoard.boardArray.forEach(el => {
+            //     el.addEventListener("click", e => {
+            //         userClick(e)
+            //     })
+            // });
         }
         if(j >= 2){
             i++
