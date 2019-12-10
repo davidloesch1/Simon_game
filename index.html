@@ -9,49 +9,15 @@
 </head>
 <body>
     <header>
-        <a id="easy" onclick="levelEasy()" href="#">Easy</a>
-        <a id="medium" onclick="levelMedium()" href="#">Medium</a>
-        <a id="hard" onclick="levelHard()" href="#">Hard</a>
-        <a href="#">Ludicrous</a>
+        <a id="easy" onclick="newBoard(event)" href="#">Easy</a>
+        <a id="medium" onclick="newBoard(event)" href="#">Medium</a>
+        <a id="hard" onclick="newBoard(event)" href="#">Hard</a>
+        <a id="ludicrous" onclick="newBoard(event)" href="#">Ludicrous</a>
     </header>
     <main>
         <section id="levelBox"></section>
-        <div class="levelEasy">
-            <div id="e1" class="easy cell"></div>
-            <div id="e2" class="easy cell"></div>
-            <div id="e3" class="easy cell"></div>
-            <div id="e4" class="easy cell" ></div>
-        </div>
-        <div class="levelMedium">
-           <div id="m1" class="medium cell"></div>
-           <div id="m2" class="medium cell"></div>
-           <div id="m3" class="medium cell"></div>
-           <div id="m4" class="medium cell"></div>
-           <div id="m5" class="medium cell"></div>
-           <div id="m6" class="medium cell"></div>
-           <div id="m7" class="medium cell"></div>
-           <div id="m8" class="medium cell"></div>
-           <div id="m9" class="medium cell"></div>
-        </div>
-        <div class="levelHard">
-            <div id="h1" class="hard cell"></div>
-            <div id="h2" class="hard cell"></div>
-            <div id="h3" class="hard cell"></div>
-            <div id="h4" class="hard cell"></div>
-            <div id="h5" class="hard cell"></div>
-            <div id="h6" class="hard cell"></div>
-            <div id="h7" class="hard cell"></div>
-            <div id="h8" class="hard cell"></div>
-            <div id="h9" class="hard cell"></div>
-            <div id="h10" class="hard cell"></div>
-            <div id="h11" class="hard cell"></div>
-            <div id="h12" class="hard cell"></div>
-            <div id="h13" class="hard cell"></div>
-            <div id="h14" class="hard cell"></div>
-            <div id="h15" class="hard cell"></div>
-            <div id="h16" class="hard cell"></div>
-        </div>
-        <button onclick="parseGameMemory(gameMemory)" id="start">Start!</button>
+        <div class="gameBoard"></div>
+        <button onclick="startGame()" id="start">Start!</button>
         <div id="modal">
             <div id="modalBox">
                 <h1>Instructions</h1>
@@ -61,6 +27,6 @@
         </div>
     </main>
     <footer></footer>
-    <script src="script.js"></script>
+    <script src="script2.js"></script>
 </body>
 </html>

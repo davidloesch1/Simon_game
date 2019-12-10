@@ -1,15 +1,12 @@
 const easy = document.querySelector(".levelEasy")
+easySquares = Array.from(easy.children)
+// console.log(easySquares)
 const medium = document.querySelector(".levelMedium")
 const hard = document.querySelector(".levelHard")
 let start = document.querySelector("#start")
-let boardSquares = document.querySelectorAll(".cell")
-console.log(boardSquares)
-boardSquares.forEach(el => {
-    el.addEventListener("click", userClick(event))
-})
 
-const levels = [easy, medium, hard]
-// console.log(levels)
+
+
 function levelEasy() {
     easy.style.display = "grid"
     medium.style.display = "none"
@@ -29,44 +26,66 @@ function levelHard() {
     start.setAttribute("onclick", "createGameMemory(hard)")
 }
 
-let level = 1
+// console.log(easy)
+
 let gameMemory = []
+let level = gameMemory.length
 let userMemory = []
-createGameMemory(easy.children)
-createGameMemory(easy.children)
-createGameMemory(easy.children)
-createGameMemory(easy.children)
+createGameMemory(easySquares)
 
 
+let i = 0
 function userClick(event) {
-    target = event.target
     
+    console.log(gameMemory[i].id)
+    let target = event.target
+    console.log(target)
+    userMemory.push(target.id)
+    console.log(userMemory[i])
+    while(userMemory[i]){
+        if(userMemory[i] === gameMemory[i].id){
+            i++
+        } else {
+            alert("you lose")
+            i = 0
+        }
+    }
+    if(userMemory.length === gameMemory.length){
+        alert("Awesome! Next: Level " + (level + 1))
+        createGameMemory(easySquares)
+        i = 0
+    }
 }
 
 function createGameMemory(board){
     let i = numPicker(board.length)
     gameMemory.push(board[i])
-    console.log(gameMemory)
-    // parseGameMemory(gameMemory)
+    // console.log(gameMemory)
+    parseGameMemory(gameMemory)
 }
 function parseGameMemory(gameMemory) {
-    var i = 0
-    console.log(gameMemory[i])
+    let i = 0
+    let j = 0
     let action = setInterval(() => {
-            if(gameMemory[i-1]){
-                makeActive(gameMemory[i-1])
-            }
-            if(gameMemory[i]){
-                makeActive(gameMemory[i])
+        if(gameMemory[i] && j < 2){
+            makeActive(gameMemory[i])
+            j++
+        } else {
+            clearInterval(action)
+            easySquares.forEach(el => {
+                el.addEventListener("click", (event)=> {
+                    userClick(event)
+                })
+            });
+        }
+        if(j >= 2){
             i++
-            } else {
-                clearInterval(action)
-            }
-        }, 1000)
+            j = 0
+        }
+    }, 500)
 }
 function makeActive(div) {
     div.classList.toggle("active")
-    // div2.classList.toggle("active")
 }
 
 function numPicker(length) {
