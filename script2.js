@@ -89,8 +89,7 @@ function userClick(event){
             myGame.createGameMemory()
         }
     } else {
-        alert("Wrong Box!!! Game Over!!!")
-        startGame()
+        document.querySelector("#tryAgain").style.display = "block"
     }
 }
 
@@ -136,4 +135,8 @@ function makeActive(div) {
 
 function numPicker(length) {
     return Math.floor((Math.random() * length))
+}
+
+function startOver() {
+
 }
