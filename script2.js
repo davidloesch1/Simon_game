@@ -138,5 +138,6 @@ function numPicker(length) {
 }
 
 function startOver() {
-
+    document.querySelector("#tryAgain").style.display = "none"
+    startGame()
 }
