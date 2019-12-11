@@ -15,7 +15,9 @@
         <a id="ludicrous" onclick="newBoard(event)" href="#">Ludicrous</a>
     </header>
     <main>
-        <section id="levelBox"></section>
+        <section id="levelBox">
+            <h3 id="level"></h3>
+        </section>
         <div class="gameBoard"></div>
         <button onclick="startGame()" id="start">Start</button>
     </main>
@@ -23,9 +25,10 @@
         <div id="modalBox">
             <h1>Instructions</h1>
             <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolorem, id eveniet et magnam non illum voluptate? Ab velit omnis harum earum doloribus ad ex deleniti exercitationem quasi similique, necessitatibus quaerat!</p>
-            <button>Close Instructions</button>
+            <button id="closeBtn" onclick="closeInstructions()">Close Instructions</button>
         </div>
     </div>
+    <button id="openBtn" onclick="openInstructions()">See Instructions</button>
     <footer></footer>
     <script src="script2.js"></script>
 </body>

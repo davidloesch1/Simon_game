@@ -66,35 +66,46 @@ function newBoard(event) {
     let squares = gameBoardSquares[difficulty]
     myBoard = new GameBoard(difficulty, squares,) 
     myBoard.createBoard(squares)
-    // console.log(myBoard.boardArray)
 }
 
 function startGame(){
     myGame = new Game([],[], 0 ,1)
-    // console.log(myGame)
     myGame.createGameMemory()
-    // console.log(myGame)
+    let level = document.querySelector("#level")
+    console.log(level)
+    level.innerHTML = "Level - " + myGame.level
 }
 
 function userClick(event){
     let target = event.target
     myGame.user.push(target)
-    console.log(myGame)
     let i = myGame.user.length - 1
     if(myGame.user[i] === myGame.game[i]){
-        console.log("happy days")
         if(myGame.user.length === myGame.game.length){
             myGame.user = []
             console.log("next level")
-            // myBoard.boardArray.forEach(el => el.removeEventListener("click", userClick))
+            myGame.level ++
+            level.innerHTML = "Level - " + myGame.level
             myGame.createGameMemory()
         }
-        
     } else {
         alert("Wrong Box!!! Game Over!!!")
         startGame()
     }
-    
+}
+
+function closeInstructions() {
+    let modal = document.querySelector("#modal")
+    modal.style.display = "none"
+    let button = document.querySelector("#openBtn")
+    button.style.display = "block"
+}
+
+function openInstructions() {
+    let modal = document.querySelector("#modal")
+    modal.style.display = "block"
+    let button = document.querySelector("#openBtn")
+    button.style.display = "none"
 }
 
 function parseGameMemory(gameMemory) {
