@@ -1,3 +1,5 @@
+//these two objects help with creating the boards dynamically with JS
+
 var colorPicker = {
     0: "one",
     1: "two",
@@ -16,6 +18,8 @@ const gameBoardSquares = {
     "hard": 16,
     "ludicrous": 100
 }
+
+
 //this creates the board based off which difficulty you want to play
 class GameBoard {
     constructor(difficulty, squares) {
@@ -45,6 +49,7 @@ class GameBoard {
     }
 }
 
+
 //this creates a new game object for each restart
 class Game {
     constructor(gameArray, userArray, clicks, level){
@@ -59,7 +64,7 @@ class Game {
         parseGameMemory(myGame.game)
     }
 }
-
+//this creates a new board and player with each difficulty selection
 function newBoard(event) {
     let target = event.target
     let difficulty = target.id 
@@ -67,15 +72,23 @@ function newBoard(event) {
     myBoard = new GameBoard(difficulty, squares,) 
     myBoard.createBoard(squares)
 }
+//this creates the first instance of a game board and player
+window.onload = () => {
+    myBoard = new GameBoard("easy", 4)
+    myBoard.createBoard(4)
+}
 
+//this is the start button function of actually starting 
+//the game
 function startGame(){
     myGame = new Game([],[], 0 ,1)
     myGame.createGameMemory()
     let level = document.querySelector("#level")
-    console.log(level)
     level.innerHTML = "Level - " + myGame.level
 }
 
+//this tracks the user clicks and compares it to the 
+//position of the gameMemory array
 function userClick(event){
     let target = event.target
     myGame.user.push(target)
@@ -83,30 +96,31 @@ function userClick(event){
     if(myGame.user[i] === myGame.game[i]){
         if(myGame.user.length === myGame.game.length){
             myGame.user = []
-            console.log("next level")
             myGame.level ++
             level.innerHTML = "Level - " + myGame.level
             myGame.createGameMemory()
         }
     } else {
-        document.querySelector("#tryAgain").style.display = "block"
+        document.querySelector("#tryAgain").style.display = "flex"
     }
 }
-
+//this closes the instruction modal
 function closeInstructions() {
     let modal = document.querySelector("#modal")
     modal.style.display = "none"
     let button = document.querySelector("#openBtn")
     button.style.display = "block"
 }
-
+//this opens the instruction modal
 function openInstructions() {
     let modal = document.querySelector("#modal")
-    modal.style.display = "block"
+    modal.style.display = "flex"
     let button = document.querySelector("#openBtn")
     button.style.display = "none"
 }
-
+//this shows the player/user the pattern by calling each div
+//in the gameMemory array twice, once to light it up, another 
+//to turn it off
 function parseGameMemory(gameMemory) {
     let i = 0
     let j = 0
@@ -117,11 +131,6 @@ function parseGameMemory(gameMemory) {
         } else {
             clearInterval(action)
             myGame.user = []
-            // myBoard.boardArray.forEach(el => {
-            //     el.addEventListener("click", e => {
-            //         userClick(e)
-            //     })
-            // });
         }
         if(j >= 2){
             i++
@@ -129,14 +138,15 @@ function parseGameMemory(gameMemory) {
         }
     }, 500)
 }
+//the actual function to turn the div "on" and "off"
 function makeActive(div) {
     div.classList.toggle("active")
 }
-
+//Randomaizer for picking the next div for the gameMemory Array
 function numPicker(length) {
     return Math.floor((Math.random() * length))
 }
-
+//this is button for after losing, you can start again.
 function startOver() {
     document.querySelector("#tryAgain").style.display = "none"
     startGame()
