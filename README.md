@@ -1,5 +1,10 @@
 Simon Game!
 
+
+Live Version:
+https://davidloesch1.github.io/Simon_game/
+
+
 The Classic Memory Game of memorizing patterns with added difficulty levels
 
 MOTIVATION:
