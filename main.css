@@ -1,3 +1,34 @@
+/* @media all and (max-width: 350px) {
+    header {
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        min-height: 75px;
+        align-items: center;
+        align-content: center;
+        background-color: darkgray;
+    }
+    a {
+        color: white;
+        font-family: Arial, Helvetica, sans-serif;
+        text-decoration: none;
+        margin: auto;
+    }
+    button {
+        padding: 10px 15px 10px 15px;
+        font-family: Arial, Helvetica, sans-serif;
+        font-size: 18px;
+        margin: auto;
+        background-color: lightgray;
+    }
+    main {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        align-content: center;
+        flex-flow: column;
+    }
+} */
 main {
     display: flex;
     justify-content: center;
@@ -5,21 +36,28 @@ main {
     flex-flow: column;
 }
 header {
+    width: 100%;
+    max-width: 700px;
+    height: 100px;
+    margin: auto;
     display: flex;
-    justify-content: center;
+    justify-content: space-between;
     align-items: center;
 }
+
 a {
     color: white;
     font-size: large;
     font-family: Arial, Helvetica, sans-serif;
     text-decoration: none;
-    margin: 30px 40px 30px 40px;
+    /* margin: 30px 40px 30px 40px; */
 }
 .gameBoard {
     margin: auto;
-    width: 400px;
-    height: 400px;
+    max-width: 400px;
+    max-height: 400px;
+    width: 100vw;
+    height: 100vw;
     border: 1px solid white;
     background-color: grey;
 }
@@ -28,6 +66,7 @@ button {
     font-family: Arial, Helvetica, sans-serif;
     font-size: 18px;
     margin: auto;
+    background-color: lightgray;
 }
 #start {
     margin-top: 20px;
@@ -86,10 +125,16 @@ button {
     filter: brightness(200%);
 }
 #levelBox {
-    height: 60px;
-    width: 200px;
+    height: 10vh;
+    max-height: 50px;
+    max-width: 200px;
+    width: 50vw;
     background-color: floralwhite;
     margin-bottom: 20px;
+    display: flex;
+    align-content: center;
+    justify-content: center;
+    align-items: center;
 }
 .cell {
     width: 100%;
