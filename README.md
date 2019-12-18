@@ -30,7 +30,7 @@ KNOWN ISSUES:
 CODE SAMPLE: The below is a sample of code that operates as the logic for tracking user clicks.  Code comments are included for.
 
 
-
+```
 //this tracks the user clicks and compares it to the 
 //position of the gameMemory array
 function userClick(event){
@@ -48,7 +48,7 @@ function userClick(event){
         document.querySelector("#tryAgain").style.display = "flex"
     }
 }
-
+```
 UNFORESEEN COMPLICATIONS: I had more trouble than I thought I would in two areas.
 1 - Timing issue.  Javascript is synchronous and making it pause to show the user the pattern turned out to be a little more difficult than I thought it would be.  I approached the problem with several types of solutions, such as a recursive setTimeout Method, which may actually be a better solution than the current one, another solution was to literally have a for loop that counted out to 1000 (or any number) in order to slow the system down for a second for the user to see the pattern.  Otherwise it would go to fast for the naked eye and be indistinguishable.  The current solution is setInterval that calls an "on" "off" type function every second and has a counter to ensure its called for both the on and the off.  This lends itself to exposure for the user to click along as the game is progressing.
 
